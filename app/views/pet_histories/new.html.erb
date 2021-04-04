@@ -1,0 +1,9 @@
+<div class="container mt-5 border rounded bg-light mb-5">
+    <h1 class="text-center mt3- mb-3">Nueva Consulta</h1>
+
+    <%= render 'form', pet_history: @pet_history %>
+    
+    <div class="mt-3 mb-3">
+        <%= link_to 'Volver', client_pet_pet_histories_path, class:"btn btn-dark"%>
+    </div>        
+</div>

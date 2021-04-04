@@ -1,0 +1,61 @@
+<div class="container mt-5 border rounded bg-light">
+    <h1 class="text-center mt-3">Detalle Cliente</h1>
+
+    <div class="mt-3">
+      <p>
+        <strong>NOMBRE:</strong>
+        <%= @client.name %>
+      </p>
+
+      <p>
+        <strong>TELEFONO:</strong>
+        <%= @client.phone %>
+      </p>
+
+      <p>
+        <strong>CORREO:</strong>
+        <%= @client.email %>
+      </p>
+    </div>
+
+    <span>
+      <td>
+        <%= link_to 'Editar Cliente', edit_client_path(@client), class:"btn btn-warning" %>
+      </td>
+      <td>
+        <%= link_to 'Ver Mascotas', client_pets_path(@client), class:"btn btn-primary" %>
+      </td>
+    </span>
+    
+
+    <div class="border mt-5">
+      <h3 class="text-center mt-3">Mascotas Cliente</h3>
+
+      <div class="container">
+        <table class="table border mt-3">
+          <thead class="table-info text-center">
+            <tr>
+              <th>NOMBRE</th>
+              <th>PESO MAXIMO</th>
+              <th>ALTURA MAXIMA</th>
+            </tr>
+          </thead>
+
+          <tbody class="text-center">
+            <% @client.pets.each do |pet|%>
+              <tr>
+                <td><%= pet.name %></td>
+                <td><%= pet.max_weight %></td>
+                <td><%= pet.max_height %></td>              
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+        
+    <div class="mt-4 mb-4">
+      <%= link_to 'Volver', clients_path, class:"btn btn-dark" %>
+    </div>
+    
+</div>

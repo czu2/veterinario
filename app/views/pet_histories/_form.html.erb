@@ -1,0 +1,35 @@
+<div class="border p-4">
+  <%= form_with(model: [@client, @pet, pet_history], local: true) do |form| %>
+    <% if pet_history.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(pet_history.errors.count, "error") %> prohibited this pet_history from being saved:</h2>
+
+        <ul>
+        <% pet_history.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :weight, "Peso" %>
+      <%= form.text_field :weight %>
+    </div>
+
+    <div class="field">
+      <%= form.label :heigth, "Altura" %>
+      <%= form.text_field :heigth %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description, "Detalle" %>
+      <%= form.text_area :description %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Actualizar Consulta', class:"btn btn-success" %>
+      <%= link_to 'Ver Ficha Consulta', client_pet_pet_history_path(@client, @pet, @pet_history), class:"btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

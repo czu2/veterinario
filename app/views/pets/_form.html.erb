@@ -1,0 +1,38 @@
+<div class="border p-4">
+ <%= form_with(model: [@client, pet], local: true) do |form| %>
+    <!-- Captura de Errores -->
+      <% if pet.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
+
+          <ul>
+          <% pet.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <!-- Captura de Errores -->
+
+
+    <div class="field mb-3">
+      <%= form.text_field :name, placeholder:'Nombre', size:'48px' %>
+    </div>
+
+    <div class="field mb-3">
+      <%= form.text_field :race, placeholder:'Raza', size:'48px' %>
+    </div>
+
+    <div class="field mb-3">
+      <%= form.label :birthdate, "Fecha de Nacimiento:" %>
+      <%= form.date_select :birthdate %>
+    </div>
+
+    <div class="actions">
+      <span>
+        <%= form.submit 'Registrar Mascota', class:"btn btn-success" %>
+        <%= link_to 'Ver Ficha Mascota', client_pet_path(@client, @pet), class:"btn btn-primary" %>
+      </span>
+    </div>
+  <% end %>
+</div>
